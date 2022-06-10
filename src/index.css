@@ -3,21 +3,98 @@ body {
 }
 
 .formContainer {
-  position: absolute;
-  width: 502px;
-  height: 684px;
-  top: 147px;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
+
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formFlexBox {
+  margin-top:5%;
   display:flex;
   justify-content: center;
+  flex-direction: column;
 }
+
+.basicForm {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1%;
+  margin-top: 100px;
+}
+
+
 
 @font-face {
   font-family: 'Lato';
   src: local('Lato'), url(./fonts/Lato-Regular.ttf) format('opentype');
+}
+
+.formTitleHolder {
+  text-align: left;
+}
+
+.formLabelStyle {
+  text-align:left;
+  margin-bottom: 2%;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.actionButtonHolder {
+  text-align:center;
+  margin-top:4%;
+  display:flex;
+}
+
+.formTitle {
+  font-weight: bold;
+  margin-bottom: 4%;
+}
+
+.submitButton {
+  background-color: #127C95;
+  color:white;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  font-family: 'Lato';
+  height:46px;
+  min-width:40%;
+  padding:5px;
+  border-radius:5px;
+  border: none;
+  margin-left:5%;
+}
+
+.cancelButton {
+  background-color: white;
+  color:#127C95;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  font-family: 'Lato';
+  height:46px;
+  min-width:40%;
+  padding:5px;
+  border-radius:5px;
+  border: none;
+  margin-right:5%;
+  border: 1px solid;
+  border-color: #127C95;
+}
+
+.submitButton:hover{
+  cursor:pointer;
+  background-color: white;
+  color:#127C95;
+  border: 1px solid;
+  border-color: #127C95;
+}
+
+.cancelButton:hover{
+  cursor:pointer;
+  color:red;
+  border: 1px solid;
+  border-color: red;
 }

@@ -57,7 +57,7 @@ const FormHolder = ({formTitle='Form Holder'}) => {
         return "Passwords must match!"
     }
     if(key==='email' && !validateEmail(itemValue)){
-      return "Must be valid email address"
+      return "Sorry, this email address is not valid. Please try again."
     }
 
 
@@ -99,11 +99,12 @@ const FormHolder = ({formTitle='Form Holder'}) => {
   }
 
   return (
-    <div className='formFlexBox'>
-      <div className='formContainer'>
+
+
+      <Grid container>
           <BasicForm submitFunc={submitFunc} formValues={formValues} setFormValues={setFormValues} itemVerticalPadding={4} itemHorizontalPadding={4} itemAlignment='center' itemsPerRow={1} fields={fields} validate={validateFunc}/>
-      </div>
-    </div>
+      </Grid>
+
   )
 }
 

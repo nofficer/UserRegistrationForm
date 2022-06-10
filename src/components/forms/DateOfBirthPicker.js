@@ -78,18 +78,18 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
 
 
   return (
-    <div style={{display:'flex'}}>
-    
-    <DropDown
-    errorStatus={errorStatus}
-    labelId={labelId.toString() + '-Years'}
-    id={id.toString()+'-Years'}
-    value={selectedYear}
-    onChange={(e)=> handleYearChange(e.target.value)}
-    fullWidth={fullWidth}
-    options={yearOptions}
-    placeholder={'Select a Year'}
-     />
+    <div style={{display:'flex', gap:'5%'}}>
+
+     <DropDown
+     errorStatus={errorStatus}
+     labelId={labelId.toString() + '-Days'}
+     id={id.toString()+'-Days'}
+     value={selectedDay}
+     onChange={(e)=> handleDayChange(e.target.value)}
+     fullWidth={fullWidth}
+     options={dayOptions}
+     placeholder={'Day'}
+      />
      <DropDown
      errorStatus={errorStatus}
      labelId={labelId.toString() + '-Months'}
@@ -98,18 +98,20 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
      onChange={(e)=> handleMonthChange(e.target.value)}
      fullWidth={fullWidth}
      options={monthOptions}
-     placeholder={'Select a Month'}
+     placeholder={'Month'}
       />
-      <DropDown
-      errorStatus={errorStatus}
-      labelId={labelId.toString() + '-Days'}
-      id={id.toString()+'-Days'}
-      value={selectedDay}
-      onChange={(e)=> handleDayChange(e.target.value)}
-      fullWidth={fullWidth}
-      options={dayOptions}
-      placeholder={'Select a Day'}
-       />
+
+    <DropDown
+    errorStatus={errorStatus}
+    labelId={labelId.toString() + '-Years'}
+    id={id.toString()+'-Years'}
+    value={selectedYear}
+    onChange={(e)=> handleYearChange(e.target.value)}
+    fullWidth={fullWidth}
+    options={yearOptions}
+    placeholder={'Year'}
+           />
+
     </div>
   )
 }

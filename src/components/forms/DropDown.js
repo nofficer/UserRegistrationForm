@@ -10,7 +10,7 @@ const DropDown = ({errorStatus,labelId,id,value,onChange,fullWidth,options,place
         id={id}
         value={value}
         onChange={onChange}
-        fullWidth={fullWidth}
+        sx={{width:'100%'}}
       >
     <MenuItem disabled key="placeholder" value='placeholder'>{placeholder}</MenuItem>
       {options.map((option) => {
