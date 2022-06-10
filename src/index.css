@@ -1,0 +1,23 @@
+body {
+  font-family: Lato;
+}
+
+.formContainer {
+  position: absolute;
+  width: 502px;
+  height: 684px;
+  top: 147px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.formFlexBox {
+  display:flex;
+  justify-content: center;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'), url(./fonts/Lato-Regular.ttf) format('opentype');
+}

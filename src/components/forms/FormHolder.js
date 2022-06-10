@@ -5,23 +5,22 @@ import Grid from '@mui/material/Grid';
 import {validateEmail} from '../utility_functions/validateEmail'
 import useWindowDimensions from '../../hooks/isMobile'
 import createuserapi from '../../apis/createuser'
+import '../../index.css'
 // Using label key will populate label on the item itself, using otherLabel will populate a label above the item
 
 const fields = [
-  {key:'full_name', label:'Full Name', type:'input', inputType:'text',variant:'outlined',fullWidth:true,required:true},
-  {key:'contact_number', label:'Contact Number', type:'phone', inputType:'number',fullWidth:true,required:true},
-  {key:'email',label:'Email', type:'input',fullWidth:true, required:true},
-  {key:'day',label:'Day of Birth', type:'select',selectPlaceholder:'Day of Birth',fullWidth:true, required:true, options:[]},
-  {key:'month',label:'Month of Birth', type:'select',selectPlaceholder:'Month of Birth',fullWidth:true, required:true, options:[]},
-  {key:'year',label:'Year of Birth', type:'select',selectPlaceholder:'Year of Birth',fullWidth:true, required:true, options:[]},
-  {key:'password',label:'Password', type:'input', inputType:'password',fullWidth:true,required:true},
-  {key:'confirm_password',label:'Confirm Password', type:'input', inputType:'password',fullWidth:true,required:true},
+  {key:'full_name', label:'Full Name', type:'input', inputType:'text',variant:'outlined',fullWidth:true,required:true, otherLabel:'Full Name'},
+  {key:'contact_number', label:'Contact Number', type:'input', inputType:'number',fullWidth:true,required:true, otherLabel:'Contact Number'},
+  {key:'email',label:'Email', type:'input',fullWidth:true, required:true, otherLabel:'Email'},
+  {key:'date_of_birth',label:'Date of Birth', type:'dob',fullWidth:true, required:true, otherLabel:'Date of Birth'},
+  {key:'password',label:'Password', type:'input', inputType:'password',fullWidth:true,required:true, otherLabel:'Password'},
+  {key:'confirm_password',label:'Confirm Password', type:'input', inputType:'password',fullWidth:true,required:true, otherLabel:'Confirm Password'},
 ]
 
 const FormHolder = ({formTitle='Form Holder'}) => {
 
   // Instantiate formValues for each instance of the BasicForm component
-  const [formValues, setFormValues] = useState({day:'placeholder',month:'placeholder', year:'placeholder'})
+  const [formValues, setFormValues] = useState({contact_number:""})
   const [windowDimensions,isMobile] = useWindowDimensions()
 
 // To implement validate function it takes three arguments (itemValue,key,required)
@@ -65,8 +64,22 @@ const FormHolder = ({formTitle='Form Holder'}) => {
       return null
   }
 
-  let submitFunc = (errors) => {
+  const handleApiSubmit = async () => {
+    try{
+      let res = await createuserapi.post('/', formValues)
+      console.log(res)
+      alert(`${res.data.title}: \ ${res.data.description}`)
+      return res
+    }
+    catch(err){
+      console.log(err.response.data)
+      alert(`${err.response.data.title}: \ ${err.response.data.description}`)
+      return err
+    }
 
+  }
+
+  let submitFunc = (errors) => {
     let errorArray = Object.keys(errors)
     let errorExists = false
     errorArray.forEach((error) => {
@@ -75,35 +88,22 @@ const FormHolder = ({formTitle='Form Holder'}) => {
       }
     })
     if(errorExists){
+      alert('Please correct outstanding errors before submitting form.')
       console.log('Error cannot submit form')
     }
     else{
-
+      let res = handleApiSubmit()
       console.log('Form Submitted')
     }
 
   }
 
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <h1 style={{textAlign:'center'}}>{formTitle}</h1>
-      </Grid>
-    <Grid item xs={2}>
-
-    </Grid>
-    <Grid item xs={8}>
-      <Grid container>
-        <BasicForm submitFunc={submitFunc} formValues={formValues} setFormValues={setFormValues} itemVerticalPadding={4} itemHorizontalPadding={4} itemAlignment='center' itemsPerRow={1} fields={fields} validate={validateFunc}/>
-
-      </Grid>
-    </Grid>
-    <Grid item xs={2}>
-
-    </Grid>
-
-
-    </Grid>
+    <div className='formFlexBox'>
+      <div className='formContainer'>
+          <BasicForm submitFunc={submitFunc} formValues={formValues} setFormValues={setFormValues} itemVerticalPadding={4} itemHorizontalPadding={4} itemAlignment='center' itemsPerRow={1} fields={fields} validate={validateFunc}/>
+      </div>
+    </div>
   )
 }
 

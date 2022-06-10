@@ -20,7 +20,7 @@ const BasicForm = ({fields=[],validate,itemsPerRow,itemAlignment,itemVerticalPad
 
     return(
       <Grid key={field.key} style={{textAlign:itemAlignment,paddingTop:itemVerticalPadding,paddingRight:itemHorizontalPadding,paddingBottom:itemVerticalPadding,paddingLeft:itemHorizontalPadding}} item xs={12/itemsPerRow}>
-      {field.otherLabel ? <InputLabel>{field.otherLabel}</InputLabel> : null}
+      {field.otherLabel && <InputLabel className='formLabelStyle'>{field.otherLabel}</InputLabel>}
       <FormItem errors={errors} setErrors={setErrors} validate={validate} formValues={formValues} setFormValues={setFormValues} defaultVal={defaultVal} key={field.key} field={field} />
       </Grid>
     )
