@@ -2,7 +2,8 @@ import React from 'react'
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-const DropDown = ({errorStatus,labelId,id,value,onChange,fullWidth,options,placeholder}) => {
+const DropDown = ({errorStatus,labelId,id,value,onChange,fullWidth,options,placeholder,required}) => {
+
   return(
     <Select
         error={errorStatus}
@@ -10,9 +11,10 @@ const DropDown = ({errorStatus,labelId,id,value,onChange,fullWidth,options,place
         id={id}
         value={value}
         onChange={onChange}
-        sx={{width:'100%'}}
+        className='DropDownSelect'
+        data-testid={id}
       >
-    <MenuItem disabled key="placeholder" value='placeholder'>{placeholder}</MenuItem>
+    <MenuItem disabled key="placeholder" value='placeholder'>{placeholder} {required && <span className='requiredasterisk'>*</span>}</MenuItem>
       {options.map((option) => {
         return (
           <MenuItem key={option.optionValue} value={option.optionValue}>{option.optionLabel}</MenuItem>

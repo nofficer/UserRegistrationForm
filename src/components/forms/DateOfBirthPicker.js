@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import DropDown from './DropDown'
 import moment from 'moment';
+import FormHelperText from '@mui/material/FormHelperText';
 
 // Feeds a string representation of daymonthyear of birth to the onChange function
 
-const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth}) => {
+const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth, helperText, required}) => {
   const [selectedMonth, setSelectedMonth] = useState('placeholder')
   const [selectedYear, setSelectedYear] = useState('placeholder')
   const [selectedDay, setSelectedDay] =useState('placeholder')
@@ -12,7 +13,7 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
   // Generate the Year and Month options. Also dynamically generate the day options based on which month and year are selected. Also memoize these so the functions don't run unnecessarily.
   const renderYearOptions = () => {
     let options = []
-    for(let i = 1915; i<moment().year()-10;i++){
+    for(let i = 1915; i<moment().year();i++){
       options.push({optionValue:i, optionLabel:i})
     }
     options.reverse()
@@ -33,20 +34,6 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
     {optionValue:11, optionLabel:'November'},
     {optionValue:12, optionLabel:'December'}
   ]
-  const renderDayOptions = () => {
-    let options = []
-    if(selectedYear === 'placeholder' || selectedMonth === 'placeholder'){
-      return options
-    }
-    let yearMonth = selectedYear.toString() + "-" + selectedMonth.toString()
-    let daysInMonth = moment(yearMonth,"YYYY-MM").daysInMonth()
-    for(let i = 1; i<daysInMonth+1;i++){
-      options.push({optionValue:i, optionLabel:i})
-    }
-    return options
-  }
-  const dayOptions = useMemo(() => renderDayOptions(),[selectedYear,selectedMonth])
-
   const handleChange = (dayval,monthval,yearval) => {
     if(yearval !== 'placeholder' && monthval !== 'placeholder' && dayval !== 'placeholder'){
       let day = dayval>9 ? dayval.toString() : "0"+dayval.toString()
@@ -60,6 +47,31 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
     }
 
   }
+
+  const renderDayOptions = () => {
+    let options = []
+    if(selectedYear === 'placeholder' || selectedMonth === 'placeholder'){
+      let daysInMonth = 31
+      for(let i = 1; i<daysInMonth+1;i++){
+        options.push({optionValue:i, optionLabel:i})
+      }
+      return options
+    }
+    let yearMonth = selectedYear.toString() + "-" + selectedMonth.toString()
+    let daysInMonth = moment(yearMonth,"YYYY-MM").daysInMonth()
+    for(let i = 1; i<daysInMonth+1;i++){
+      options.push({optionValue:i, optionLabel:i})
+    }
+    // Will autoselect the last day of the month if user selected a day that doesn't exist in the month the user just changed it to
+    if(selectedDay>daysInMonth){
+      setSelectedDay(daysInMonth)
+      handleChange(daysInMonth,selectedMonth,selectedYear)
+    }
+    return options
+  }
+  const dayOptions = useMemo(() => renderDayOptions(),[selectedYear,selectedMonth,renderDayOptions])
+
+
 
   const handleDayChange = (val) => {
     setSelectedDay(val)
@@ -78,9 +90,11 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
 
 
   return (
-    <div style={{display:'flex', gap:'5%'}}>
+    <>
+    <div className='DateOfBirthPicker'>
 
      <DropDown
+     required={required}
      errorStatus={errorStatus}
      labelId={labelId.toString() + '-Days'}
      id={id.toString()+'-Days'}
@@ -89,8 +103,10 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
      fullWidth={fullWidth}
      options={dayOptions}
      placeholder={'Day'}
+     
       />
      <DropDown
+     required={required}
      errorStatus={errorStatus}
      labelId={labelId.toString() + '-Months'}
      id={id.toString()+'-Months'}
@@ -102,6 +118,7 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
       />
 
     <DropDown
+    required={required}
     errorStatus={errorStatus}
     labelId={labelId.toString() + '-Years'}
     id={id.toString()+'-Years'}
@@ -113,6 +130,8 @@ const DateOfBirthPicker = ({errorStatus, labelId, id, value, onChange, fullWidth
            />
 
     </div>
+    <FormHelperText className='dobpickerhelpertext'>{helperText}</FormHelperText>
+    </>
   )
 }
 

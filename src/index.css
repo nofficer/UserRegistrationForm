@@ -3,11 +3,8 @@ body {
 }
 
 .formContainer {
-
-  display:flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+margin-top:5%;
+background: #FFFFFF;
 }
 
 .formFlexBox {
@@ -23,8 +20,31 @@ body {
   border-radius: 8px;
   padding: 1%;
   margin-top: 100px;
+  padding-top:1.5%;
+  padding-bottom:2.5%;
+  padding-left:3%;
+  padding-right:3%;
 }
 
+.mobileBasicForm{
+  background: #FFFFFF;
+
+  border-top: 1px solid #D8E0E9;
+  padding-top:1.5%;
+  padding-bottom:2.5%;
+  padding-left:3%;
+  padding-right:3%;
+
+}
+
+.DateOfBirthPicker{
+  display:flex;
+  gap:5%;
+}
+
+.DropDownSelect{
+  width:100%;
+}
 
 
 @font-face {
@@ -41,6 +61,7 @@ body {
   margin-bottom: 2%;
   font-weight: bold;
   font-size: 16px;
+  margin-top:2%
 }
 
 .actionButtonHolder {
@@ -49,9 +70,28 @@ body {
   display:flex;
 }
 
+.mobileActionButtonHolder {
+  text-align:center;
+  margin-top:15%;
+  display:flex;
+  left:0px;
+
+}
+
 .formTitle {
   font-weight: bold;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+.mobileFormTitle {
+  font-weight: bold;
+  margin-bottom: 2%;
+  font-size: 20px;
+  line-height: 150%;
+  margin-top:15%;
+  padding-left:3%;
 }
 
 .submitButton {
@@ -63,9 +103,23 @@ body {
   height:46px;
   min-width:40%;
   padding:5px;
-  border-radius:5px;
+  border-radius:6px;
   border: none;
-  margin-left:5%;
+  margin-left:2%;
+}
+
+.mobileSubmitButton {
+  background-color: #127C95;
+  color:white;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  font-family: 'Lato';
+  height:46px;
+  min-width:100%;
+  padding:5px;
+  border-radius:6px;
+  border: none;
+  margin-top: 3%;
 }
 
 .cancelButton {
@@ -77,11 +131,28 @@ body {
   height:46px;
   min-width:40%;
   padding:5px;
-  border-radius:5px;
+  border-radius:6px;
   border: none;
-  margin-right:5%;
+  margin-right:2%;
   border: 1px solid;
   border-color: #127C95;
+
+}
+
+.mobileCancelButton {
+  background-color: white;
+  color:#127C95;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  font-family: 'Lato';
+  height:46px;
+  min-width:100%;
+  padding:5px;
+  border-radius:6px;
+  border: none;
+  border: 1px solid;
+  border-color: #127C95;
+
 }
 
 .submitButton:hover{
@@ -97,4 +168,75 @@ body {
   color:red;
   border: 1px solid;
   border-color: red;
+}
+
+
+.dobpickerhelpertext {
+    margin-top: 3px !important;
+    margin-right: 14px !important;
+    margin-bottom: 0 !important;
+    margin-left: 14px !important;
+    color: #d32f2f !important;
+}
+
+.requiredasterisk {
+  color:#d32f2f;
+}
+
+.Alert {
+  position: absolute;
+  height: 76px;
+  left: 63.7%;
+  top: 15.2%;
+}
+
+.mobileAlert {
+  position: absolute;
+  font-size:14px;
+}
+
+.Centerer
+{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.Centered
+{
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.header{
+  position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 94.45%;
+background: #252F3D;
+}
+
+.telephoneIconHolder{
+  color:white;
+  font-size: 14px;
+}
+
+.telephoneIcon{
+  margin-top: 1%;
+}
+
+.alignleft{
+  display:flex;
+  justify-content: flex-end;
+}
+
+
+.headerPhoneNumberSpan{
+  margin-left: 2%;
+}
+
+.mobileLogoImage{
+  width:40%;
+  margin-left:4%;
 }
