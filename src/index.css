@@ -78,7 +78,7 @@ background: #FFFFFF;
 
 .mobileActionButtonHolder {
   text-align:center;
-  margin-top:15%;
+  margin-top:20%;
   display:flex;
   left:0px;
   box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.15);
@@ -247,4 +247,18 @@ background: #252F3D;
 .mobileLogoImage{
   width:40%;
   margin-left:4%;
+}
+
+.alertTextHolder {
+  display:flex;
+  align-items: center;
+}
+
+.alertText {
+  margin-left: 2%;
+}
+
+.mobileAlertPopUpHolder{
+  display:flex;
+  justify-content: center;
 }

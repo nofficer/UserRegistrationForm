@@ -48,8 +48,9 @@ const BasicForm = ({fields=[],validate,itemsPerRow,formValues,setFormValues,subm
 
 
       <Grid item xs={12}>
+      <div className='mobileAlertPopUpHolder'>
           {statusAlert.visible && <SubmitAlert isMobile={isMobile} onClose={() => setStatusAlert({})} alertType={statusAlert.alertType} alertText={statusAlert.alertText}/>}
-
+          </div>
       </Grid>
 
       <Grid item xs={12}>
