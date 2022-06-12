@@ -28,9 +28,10 @@ const FormHolder = ({formTitle='Form Holder'}) => {
 // If validate function returns null then no errors will be rendered
 // If validate function returns a string then an error will be rendered for the form item corresponding to the key
   let validateFunc = (itemValue,key,required) => {
+    // eslint-disable-next-line
     var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 
-    if(itemValue === '' && required===true || typeof(itemValue) === 'undefined' && required===true ){
+    if( (itemValue === '' && required===true) || (typeof(itemValue) === 'undefined' && required===true) ){
       return 'Required'
     }
     if(key==='full_name'){

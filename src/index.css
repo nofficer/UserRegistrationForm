@@ -42,6 +42,11 @@ background: #FFFFFF;
   gap:5%;
 }
 
+.mobileDateOfBirthPicker{
+  display:flex;
+  gap:1%;
+}
+
 .DropDownSelect{
   width:100%;
 }

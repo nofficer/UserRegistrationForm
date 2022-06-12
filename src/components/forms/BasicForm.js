@@ -18,7 +18,7 @@ const BasicForm = ({fields=[],validate,itemsPerRow,formValues,setFormValues,subm
     return(
       <Grid key={field.key}  item xs={12/itemsPerRow}>
       {field.otherLabel && <div className='formLabelStyle'>{field.otherLabel}</div>}
-      <FormItem errors={errors} setErrors={setErrors} validate={validate} formValues={formValues} setFormValues={setFormValues} defaultVal={defaultVal} key={field.key} field={field} />
+      <FormItem isMobile={isMobile} errors={errors} setErrors={setErrors} validate={validate} formValues={formValues} setFormValues={setFormValues} defaultVal={defaultVal} key={field.key} field={field} />
       </Grid>
     )
   }

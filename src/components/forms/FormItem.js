@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import DateOfBirthPicker from './DateOfBirthPicker'
 
 
-const FormItem = ({field,defaultVal,formValues,setFormValues,validate,errors,setErrors}) => {
+const FormItem = ({field,defaultVal,formValues,setFormValues,validate,errors,setErrors,isMobile}) => {
   const [itemValue, setItemValue] = useState(defaultVal)
   const [errorStatus,setErrorStatus] = useState(false)
   const [errorText,setErrorText] = useState('')
@@ -42,6 +42,7 @@ const FormItem = ({field,defaultVal,formValues,setFormValues,validate,errors,set
   else if(field.type === 'dob'){
     return (
       <DateOfBirthPicker
+      isMobile={isMobile}
       required={field.required}
       errorStatus={errorStatus}
       helperText={errorText}
