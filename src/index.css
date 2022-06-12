@@ -5,6 +5,7 @@ body {
 .formContainer {
 margin-top:5%;
 background: #FFFFFF;
+
 }
 
 .formFlexBox {
@@ -28,7 +29,6 @@ background: #FFFFFF;
 
 .mobileBasicForm{
   background: #FFFFFF;
-
   border-top: 1px solid #D8E0E9;
   padding-top:1.5%;
   padding-bottom:2.5%;
@@ -73,6 +73,7 @@ background: #FFFFFF;
   text-align:center;
   margin-top:4%;
   display:flex;
+  margin-bottom:4%;
 }
 
 .mobileActionButtonHolder {
@@ -80,6 +81,7 @@ background: #FFFFFF;
   margin-top:15%;
   display:flex;
   left:0px;
+  box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.15);
 
 }
 
@@ -125,6 +127,7 @@ background: #FFFFFF;
   border-radius:6px;
   border: none;
   margin-top: 3%;
+  margin-bottom:5%;
 }
 
 .cancelButton {
@@ -157,7 +160,7 @@ background: #FFFFFF;
   border: none;
   border: 1px solid;
   border-color: #127C95;
-
+  margin-top:5%;
 }
 
 .submitButton:hover{
