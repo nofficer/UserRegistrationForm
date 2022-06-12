@@ -67,7 +67,6 @@ const FormHolder = ({formTitle='Form Holder'}) => {
   }
 
   const handleApiSubmit = async () => {
-
     try{
       let res = await createuserapi.post('/', formValues)
       setStatusAlert({visible:true, alertType:'success', alertText: `  ${res.data.title}:   ${res.data.description}`})
