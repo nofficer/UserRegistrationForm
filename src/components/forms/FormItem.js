@@ -35,7 +35,7 @@ const FormItem = ({field,defaultVal,formValues,setFormValues,validate,errors,set
 
   if(field.type === 'input'){
     return (
-        <TextField data-testid={field.key} required={field.required} onBlur={changeField} fullWidth={field.fullWidth} variant={field.variant} error={errorStatus} helperText={errorText} value={itemValue} onChange={changeField}  key={field.key} type={field.inputType} label={field.label}/>
+        <TextField inputProps={ {"data-testid": field.key}} required={field.required} onBlur={changeField} fullWidth={field.fullWidth} variant={field.variant} error={errorStatus} helperText={errorText} value={itemValue} onChange={changeField}  key={field.key} type={field.inputType} label={field.label}/>
     )
   }
 
@@ -51,7 +51,7 @@ const FormItem = ({field,defaultVal,formValues,setFormValues,validate,errors,set
       value={itemValue}
       onChange={changeField}
       fullWidth={field.fullWidth}
-      data-testid={field.key}
+
        />
     )
   }

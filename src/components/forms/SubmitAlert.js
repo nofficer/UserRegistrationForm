@@ -15,7 +15,7 @@ const SubmitAlert = ({onClose, alertText, alertType, isMobile}) => {
   else{
     return(
 
-      <Alert icon={false} onClose={() => {onClose()}} className='Alert'  severity={alertType}>
+      <Alert  icon={false} onClose={() => {onClose()}} className='Alert'  severity={alertType}>
         <span className="Centerer"></span> <span className='Centered'> {alertType==='error' ? <MdHighlightOff size={20}/> : <BsCheckCircle size={20}/> }<strong>{alertText}</strong></span> <span className="Centerer"></span>
         </Alert>
 

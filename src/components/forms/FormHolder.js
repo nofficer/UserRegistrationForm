@@ -16,10 +16,10 @@ const fields = [
   {key:'confirm_password',label:'Confirm Password', type:'input', inputType:'password',fullWidth:true,required:true, otherLabel:'Confirm Password'},
 ]
 
-const FormHolder = ({formTitle='Form Holder'}) => {
+const FormHolder = ({formTitle='Form Holder',initialFormValues={} }) => {
 
   // Instantiate formValues for each instance of the BasicForm component
-  const [formValues, setFormValues] = useState({})
+  const [formValues, setFormValues] = useState(initialFormValues)
   const [errors,setErrors] = useState({})
   const isMobile = useWindowDimensions()[1]
   const [statusAlert,setStatusAlert] = useState({visible:false})
@@ -45,8 +45,8 @@ const FormHolder = ({formTitle='Form Holder'}) => {
 
     }
     if(key==='contact_number'){
-      if(itemValue.length>15){
-        return "Phone numbers should not exceed 15 digits."
+      if(itemValue.length>11){
+        return "Canadian phone numbers should not exceed 11 digits."
       }
     }
     if(key==='password'){
@@ -84,13 +84,14 @@ const FormHolder = ({formTitle='Form Holder'}) => {
     let newErrorObj = {}
     fields.forEach((field) => {
       newErrorObj[field.key] = validateFunc(formValues[field.key],field.key,field.required)
-
     })
+
     setErrors({...errors,...newErrorObj})
     let errorArray = Object.keys(newErrorObj)
     let errorExists = false
     errorArray.forEach((error) => {
-      if(errors[error] !== null){
+      if(newErrorObj[error] !== null){
+
         errorExists = true
       }
     })
